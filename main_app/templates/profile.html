@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{{ username }}'s collection: </h1>
+    {% for cat in cats %}
+        <a href="/cats/{{cat.id}}">
+            <h3>{{ cat.name }}</h3>
+        </a>
+    {% endfor %}
+
+    <div>
+        <div>
+            <a href="/cats/create/">Adopt a new cat</a>
+        </div>
+        <div>
+            <a href="/cattoys/create/">Make a new toy</a>
+        </div>
+    </div>
+
+{% endblock %}
