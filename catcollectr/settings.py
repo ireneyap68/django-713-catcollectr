@@ -33,7 +33,7 @@ else:
 # Define general behavior variables for DJANGO_HOST and all others
 if DJANGO_HOST == "production":
     DEBUG = False
-    STATIC_URL = 'https://yourappname.herokuapp.com'
+    STATIC_URL = 'https://ireneyap-catcollector.herokuapp.com/  '
 else:
     DEBUG = True
     STATIC_URL = '/static/'
@@ -50,7 +50,7 @@ SECRET_KEY = os.environ['SECRET_KEY'] or config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True - delete this because set at above
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://ireneyap-catcollector.herokuapp.com/ ' ]
 
 
 # Application definition
