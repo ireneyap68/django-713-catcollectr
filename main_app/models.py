@@ -19,3 +19,9 @@ class Cat(models.Model):
 
     def __str__(self):
         return self.name
+
+class videos(models.Model):
+    video_id = models.CharField(blank=False, max_length=32)
+    file_name = models.CharField(blank=False, max_length=500)
+    def __str__(self):
+        return self.video_id

@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'embed_video',
 ]
 
 MIDDLEWARE = [
@@ -63,6 +64,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.request',
             ],
         },
     },
@@ -80,6 +82,13 @@ DATABASES = {
         'NAME': 'cats',
     }
 }
+
+EMBED_VIDEO_BACKENDS = (
+'embed_video.backends.YoutubeBackend',
+'embed_video.backends.VimeoBackend',
+'embed_video.backends.SoundCloudBackend',
+'my_app.backends.CustomBackend',
+)
 
 
 # Password validation

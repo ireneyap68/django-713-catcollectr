@@ -1,5 +1,5 @@
-from django.shortcuts import render, redirect
-from .models import Cat, CatToy
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import Cat, CatToy, videos
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.models import User
@@ -8,6 +8,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from django.conf import settings
+
 
 # Create your views (these are like your controller actions) here.
 ###### USER ######
@@ -132,3 +134,19 @@ def index(request):
 
 def about(request):
     return render(request, 'about.html')
+
+
+def display_video(request,vid=None):
+    if vid is None:
+        return HttpResponse("No Video")
+
+    try:
+        video_object = get_object_or_404(videos, pk = vid)
+    except videos.DoesNotExist:
+        return HttpResponse("Id doesn't exists.")
+
+    file_name = video_object.file_name
+    #getting full url - 
+    video_url = settings.MEDIA_URL+file_name
+
+    return render(request, "video_template.html", {"url":video_url})
